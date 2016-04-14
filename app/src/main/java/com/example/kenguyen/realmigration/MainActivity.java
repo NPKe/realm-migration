@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     void configRealm() {
         config = new RealmConfiguration.Builder(this)
                 .name("DemoMigration.realm")
-                .schemaVersion(1)
+                .schemaVersion(2)
                 .migration(new MyMigration())
                 .build();
 

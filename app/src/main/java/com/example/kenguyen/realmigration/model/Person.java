@@ -14,8 +14,8 @@ public class Person extends RealmObject {
     @Required
     private String fullName;
     private String email;
-
     private int age;
+    private RealmList<Pet> pets;
 
     public Person(String fullName, int age) {
         this.fullName = fullName;
