@@ -7,17 +7,18 @@ package com.example.kenguyen.realmigration.model;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
+import io.realm.annotations.Required;
 
 public class Person extends RealmObject {
 
-    private String firstName;
-    private String lastName;
+    @Required
+    private String fullName;
+    private String email;
 
     private int age;
 
-    public Person(String firstName, String lastName, int age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Person(String fullName, int age) {
+        this.fullName = fullName;
         this.age = age;
     }
 
