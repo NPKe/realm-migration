@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         //initData();
 
-        addPets();
+        //addPets();
 
         query();
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     void configRealm() {
         config = new RealmConfiguration.Builder(this)
                 .name("DemoMigration.realm")
-                .schemaVersion(2)
+                .schemaVersion(3)
                 .migration(new MyMigration())
                 .build();
 
@@ -67,33 +67,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void addPets() {
-        Person p = realm.where(Person.class)
-                        .equalTo("fullName", "Tuan Nguyen")
-                        .findFirst();
-
-        realm.beginTransaction();
-
-        p.getPets().add(new Pet("Jimbo", "dog"));
-        p.getPets().add(new Pet("Cubin", "cat"));
-
-        realm.commitTransaction();
+//        Person p = realm.where(Person.class)
+//                        .equalTo("fullName", "Tuan Nguyen")
+//                        .findFirst();
+//
+//        realm.beginTransaction();
+//
+//        p.getPets().add(new Pet("Jimbo", "dog"));
+//        p.getPets().add(new Pet("Cubin", "cat"));
+//
+//        realm.commitTransaction();
     }
 
     void initData() {
-        Pet pet = null;
-
-        realm.beginTransaction();
-
-        pet = new Pet("Jimbo", "dog");
-        realm.copyToRealm(pet);
-
-        pet = new Pet("Cubin", "cat");
-        realm.copyToRealm(pet);
-
-        pet = new Pet("Baboo", "pig");
-        realm.copyToRealm(pet);
-
-        realm.commitTransaction();
+//        Pet pet = null;
+//
+//        realm.beginTransaction();
+//
+//        pet = new Pet("Jimbo", "dog");
+//        realm.copyToRealm(pet);
+//
+//        pet = new Pet("Cubin", "cat");
+//        realm.copyToRealm(pet);
+//
+//        pet = new Pet("Baboo", "pig");
+//        realm.copyToRealm(pet);
+//
+//        realm.commitTransaction();
     }
 
     void query() {

@@ -11,7 +11,6 @@ import io.realm.annotations.Required;
 
 public class Person extends RealmObject {
 
-    @Required
     private String fullName;
     private String email;
     private int age;

@@ -11,10 +11,9 @@ public class Pet extends RealmObject {
     @Required
     private String name;
 
-    @Required
-    private String type;
+    private int type;
 
-    public Pet(String n, String t) {
+    public Pet(String n, int t) {
         name = n; type = t;
     }
 
@@ -30,11 +29,11 @@ public class Pet extends RealmObject {
         this.name = name;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 }

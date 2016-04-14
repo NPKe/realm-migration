@@ -66,5 +66,30 @@ public class MyMigration implements RealmMigration {
                     });
             oldVersion++;
         }
+
+        if (oldVersion == 2) {
+            RealmObjectSchema personSchema = schema.get("Person");
+            personSchema.setNullable("fullName", true); // fullName is nullable now.
+
+            // Change type from String to int
+            schema.get("Pet")
+                    .addField("type_tmp", int.class)
+                    .transform(new RealmObjectSchema.Function() {
+                        @Override
+                        public void apply(DynamicRealmObject obj) {
+                            String oldType = obj.getString("type");
+                            if (oldType.equals("dog")) {
+                                obj.setLong("type_tmp", 1);
+                            } else if (oldType.equals("cat")) {
+                                obj.setInt("type_tmp", 2);
+                            } else if (oldType.equals("pig")) {
+                                obj.setInt("type_tmp", 3);
+                            }
+                        }
+                    })
+                    .removeField("type")
+                    .renameField("type_tmp", "type");
+            oldVersion++;
+        }
     }
 }
