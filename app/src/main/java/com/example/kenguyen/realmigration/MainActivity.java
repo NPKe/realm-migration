@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.kenguyen.realmigration.model.MyMigration;
 import com.example.kenguyen.realmigration.model.Person;
+import com.example.kenguyen.realmigration.model.Pet;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Realm realm;
     private RealmConfiguration config;
     private RealmResults<Person> personList;
+    private RealmResults<Pet> petList;
 
     private ListView listView;
     private List<String> data = new ArrayList<String>();
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         configRealm();
 
-        //initData();
+        initData();
 
         query();
 
@@ -62,29 +64,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void initData() {
-//        Person student = null;
-//
-//        realm.beginTransaction();
-//
-//        student = new Person("Tuan", "Nguyen", 19);
-//        realm.copyToRealm(student);
-//
-//        student = new Person("Huynh", "Phan", 20);
-//        realm.copyToRealm(student);
-//
-//        student = new Person("Huy", "Nguyen", 80);
-//        realm.copyToRealm(student);
-//
-//        realm.commitTransaction();
+        Pet pet = null;
+
+        realm.beginTransaction();
+
+        pet = new Pet("Jimbo", "dog");
+        realm.copyToRealm(pet);
+
+        pet = new Pet("Cubin", "cat");
+        realm.copyToRealm(pet);
+
+        pet = new Pet("Baboo", "pig");
+        realm.copyToRealm(pet);
+
+        realm.commitTransaction();
     }
 
     void query() {
-        personList = realm.where(Person.class)
-                .findAll();
+        personList = realm.where(Person.class).findAll();
+        petList = realm.where(Pet.class).findAll();
     }
 
     void addData() {
         for (Person p : personList) {
+            data.add(p.toString());
+        }
+        for (Pet p : petList) {
             data.add(p.toString());
         }
     }

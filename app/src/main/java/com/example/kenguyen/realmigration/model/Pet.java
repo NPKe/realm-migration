@@ -14,6 +14,14 @@ public class Pet extends RealmObject {
     @Required
     private String type;
 
+    public Pet(String n, String t) {
+        name = n; type = t;
+    }
+
+    public Pet() {
+
+    }
+    
     public String getName() {
         return name;
     }
