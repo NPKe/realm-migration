@@ -21,7 +21,7 @@ public class Pet extends RealmObject {
     public Pet() {
 
     }
-    
+
     public String getName() {
         return name;
     }

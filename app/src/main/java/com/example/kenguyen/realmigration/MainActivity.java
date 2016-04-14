@@ -15,6 +15,7 @@ import com.example.kenguyen.realmigration.model.Pet;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 import java.io.File;
@@ -44,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         configRealm();
 
-        initData();
+        //initData();
+
+        addPets();
 
         query();
 
@@ -61,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         realm = Realm.getInstance(config);
+    }
+
+    void addPets() {
+        Person p = realm.where(Person.class)
+                        .equalTo("fullName", "Tuan Nguyen")
+                        .findFirst();
+
+        realm.beginTransaction();
+
+        p.getPets().add(new Pet("Jimbo", "dog"));
+        p.getPets().add(new Pet("Cubin", "cat"));
+
+        realm.commitTransaction();
     }
 
     void initData() {

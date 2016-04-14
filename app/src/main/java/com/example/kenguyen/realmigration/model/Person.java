@@ -25,5 +25,13 @@ public class Person extends RealmObject {
     public Person() {
 
     }
+
+    public RealmList<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(RealmList<Pet> pets) {
+        this.pets = pets;
+    }
 }
 
